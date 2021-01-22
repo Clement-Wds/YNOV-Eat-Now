@@ -12,8 +12,8 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::view('/','web/home');
+//Page Home avec la liste des restaurants
+Route::get('/', 'App\Http\Controllers\RestaurantController@listeRestaurant');
 
 //INSCRIPTION
 //Affichage formulaire d'inscription
@@ -32,7 +32,6 @@ Route::post('/connexion', 'App\Http\Controllers\ConnexionController@connexion');
 Route::get('/create_restaurant', 'App\Http\Controllers\UserAccountController@createRestaurant');
 //Création du restaurant
 Route::post('/new_restaurant', 'App\Http\Controllers\InscriptionRestoController@createRestaurant');
-
 
 //Afficher tous les utilisateurs
 Route::get('/index', 'App\Http\Controllers\UserController@index');

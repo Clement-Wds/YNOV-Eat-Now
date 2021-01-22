@@ -16,6 +16,9 @@
           <li class="nav-item">
             <a class="nav-link" href="{{ url('/inscription') }}">Inscription</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url('/create_restaurant') }}">Enregistrer un Restaurant</a>
+          </li>
         </ul>
       </div>
     </div>
