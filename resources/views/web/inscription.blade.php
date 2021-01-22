@@ -57,7 +57,7 @@
         <label for="inputStatus" class="form-label">Statut</label>
         <select id="inputStatus" name="status" class="form-select">
             <option selected>Client</option>
-            <option>Restaurant</option>
+            <option>Restaurateur</option>
             <!-- Afficher un message expliquant que l'utiisateur sera ammené à créer un compte restaurant -->
         </select>
         @if($errors->has('status'))
