@@ -6,7 +6,7 @@
 <p></p>
 
 <form action="/new_restaurant" method="POST" class="row g-3">
-    {{-- {{ crsf_field() }} --}}
+    {{ csrf_field() }}
     <div class="input-group mb-3">
         <span class="input-group-text" id="inputGroup-sizing-default">Nom du Restaurant</span>
         <input type="text" name="name" placeholder="Restaurant" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
