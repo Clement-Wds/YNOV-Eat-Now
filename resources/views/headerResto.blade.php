@@ -23,7 +23,11 @@
             <li class="nav-item">
               <a class="nav-link" href="{{ url('/signout') }}">Déconnexion</a>
             </li>
-            
+
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url('/create_restaurant') }}">Enregistrer un Restaurant</a>
+            </li>
+
           @endif
 
         </ul>

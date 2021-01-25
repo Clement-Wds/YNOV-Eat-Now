@@ -12,8 +12,11 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::get('/', 'App\Http\Controllers\HomeController@home');
+
 //Page Home avec la liste des restaurants
-Route::get('/', 'App\Http\Controllers\RestaurantController@listeRestaurant');
+Route::get('/home', 'App\Http\Controllers\RestaurantController@listeRestaurant');
 
 //Se déconnecter
 Route::get('/signout', 'App\Http\Controllers\UserAccountController@signout');
