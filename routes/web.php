@@ -44,3 +44,6 @@ Route::get('/dashboard', 'App\Http\Controllers\RestaurantController@dashboard');
 
 //Afficher tous les utilisateurs
 Route::get('/index', 'App\Http\Controllers\UserController@index');
+
+//Gérer un restaurant
+Route::get('/restaurant/manage/{id}', 'App\Http\Controllers\RestaurantController@manageRestaurant')->name('manage.Restaurant');
