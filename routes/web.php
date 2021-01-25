@@ -15,6 +15,9 @@ use Illuminate\Support\Facades\Route;
 //Page Home avec la liste des restaurants
 Route::get('/', 'App\Http\Controllers\RestaurantController@listeRestaurant');
 
+//Se déconnecter
+Route::get('/signout', 'App\Http\Controllers\UserAccountController@signout');
+
 //INSCRIPTION
 //Affichage formulaire d'inscription
 Route::get('/inscription', 'App\Http\Controllers\InscriptionCOntroller@formulaire');
