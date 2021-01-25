@@ -39,5 +39,8 @@ Route::get('/create_restaurant', 'App\Http\Controllers\UserAccountController@cre
 //Création du restaurant
 Route::post('/new_restaurant', 'App\Http\Controllers\InscriptionRestoController@createRestaurant');
 
+//Afficher le tableau de bord du restaurateur
+Route::get('/dashboard', 'App\Http\Controllers\RestaurantController@dashboard');
+
 //Afficher tous les utilisateurs
 Route::get('/index', 'App\Http\Controllers\UserController@index');

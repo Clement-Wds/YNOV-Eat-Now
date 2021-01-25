@@ -12,7 +12,7 @@ class HomeController extends Controller
 
         if (auth()->check()){
             if ($user->status == 'Restaurateur'){
-                return view('restaurant/dashboard');
+                return redirect('/dashboard');
             }
             return redirect('/home');
         }
