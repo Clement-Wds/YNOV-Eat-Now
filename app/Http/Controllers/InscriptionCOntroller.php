@@ -31,6 +31,6 @@ class InscriptionCOntroller extends Controller
             'balance' => 0
         ]);
 
-        return 'mail :' .request('email');
+        return redirect('/connexion');
     }
 }
