@@ -2,8 +2,8 @@
 
 @section('content')
 
-<h1>Tableau de Bord</h1>
+<h1>Mon Restaurant</h1>
 
-<h3>Mes Restaurants</h3>
+<h3>Mes plats</h3>
 
 @endsection
