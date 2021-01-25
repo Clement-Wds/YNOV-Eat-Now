@@ -27,14 +27,25 @@ class RestaurantController extends Controller
     }
 
     public function manageRestaurant(int $id){
-        $restaurant = Restaurant::all()->where('id', $id)->first;
+        $restaurant = Restaurant::all()->where('id', $id)->first();
         $user = auth()->user();
+        $user_id = Restaurant::all()->where('id', $id)->first()->user_id;
 
-        if (strval($restaurant->user_id) == strval($user->id)){
-            return view('restaurant/myRestaurant', [
-                'restaurant' => $restaurant
-            ]);
+        if (auth()->check()){
+            if($user_id == $user->id){
+                return view('restaurant/myRestaurant', [
+                    'restaurant' => $restaurant,
+                    'user' => $user
+                ]);
+            }
+            else{
+                flash('Vous n\'êtes pas le propriétaire de ce restaurant !')->error();
+                return back();
+            }
         }
-        flash('Vous n\'avez pas l\'autorisation d\'accéder à cette page !')->error();
+        else{
+            flash('Vous devez être connecté pour accéder à cette page')->error();
+            return back();
+        }
     }
 }
