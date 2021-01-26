@@ -21,11 +21,15 @@
           @else
 
             <li class="nav-item">
-              <a class="nav-link" href="{{ url('/signout') }}">Déconnexion</a>
+              <a class="nav-link" href="{{ url('/dashboard') }}">Tableau de bord</a>
             </li>
 
             <li class="nav-item">
               <a class="nav-link" href="{{ url('/create_restaurant') }}">Enregistrer un Restaurant</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url('/signout') }}">Déconnexion</a>
             </li>
 
           @endif

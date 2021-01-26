@@ -3,7 +3,7 @@
 @section('content')
 
 <h1>Enregistrer votre restaurant</h1>
-<p></p>
+<br>
 
 <form action="/new_restaurant" method="POST" class="row g-3">
     {{ csrf_field() }}

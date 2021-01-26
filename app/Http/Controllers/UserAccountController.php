@@ -6,14 +6,6 @@ use Illuminate\Http\Request;
 
 class UserAccountController extends Controller
 {
-    public function createRestaurant(){
-        if(auth()->check()){
-            return view('restaurant/inscriptionresto');
-        }
-        flash('Vous devez être connectés pour accéder à cette page')->error();
-        return back();
-    }
-
     public function signout(){
         auth()->logout();
 

@@ -35,7 +35,7 @@ Route::post('/connexion', 'App\Http\Controllers\ConnexionController@connexion');
 
 //RESTAURANT
 //Affichage du formulaire de création du restaurant
-Route::get('/create_restaurant', 'App\Http\Controllers\UserAccountController@createRestaurant');
+Route::get('/create_restaurant', 'App\Http\Controllers\InscriptionRestoController@formulaire');
 //Création du restaurant
 Route::post('/new_restaurant', 'App\Http\Controllers\InscriptionRestoController@createRestaurant');
 
@@ -50,3 +50,8 @@ Route::get('/index', 'App\Http\Controllers\UserController@index');
 
 //Gérer un restaurant
 Route::get('/restaurant/manage/{id}', 'App\Http\Controllers\RestaurantController@manageRestaurant')->name('manage.Restaurant');
+
+//Afficher le formulaire de création de plat
+Route::get('/create_dish', 'App\Http\Controllers\DishController@formulaire');
+//Créer un plat
+Route::post('/new_dish', 'App\Http\Controllers\DishController@createDish');

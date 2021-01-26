@@ -18,10 +18,9 @@
                   <li class="list-group-item">{{ $restaurant->mail_address }}</li>
                 </ul>
                 <div class="card-body">
-                  <a href="#" class="card-link">Modifier</a>
+                  <a href="/create_dish" class="btn btn-primary">Créer un plat</a>
                 </div>
               </div>
-            
         </div>
          <!-- Liste des plats -->
         <div class="col-sm-1 col-md-7">

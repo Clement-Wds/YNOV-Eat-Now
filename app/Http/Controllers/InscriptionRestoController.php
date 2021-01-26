@@ -7,6 +7,14 @@ use Illuminate\Http\Request;
 
 class InscriptionRestoController extends Controller
 {
+    public function formulaire(){
+        if(auth()->check()){
+            return view('restaurant/inscriptionresto');
+        }
+        flash('Vous devez être connectés pour accéder à cette page')->error();
+        return back();
+    }
+
     public function createRestaurant(){
         request()->validate([
             'name' => ['required'],
@@ -16,13 +24,6 @@ class InscriptionRestoController extends Controller
 
         $user_id = auth()->user()->id;
         $logo = 'logo';
-
-        // auth()->user()->restaurant()->create([
-        //     'name' => request('name'),
-        //     'postal_address' => request('postal_address'),
-        //     'mail_address' => request('mail_address'),
-        //     'restaurant_logo' => $restaurant_logo
-        // ]);
 
         Restaurant::create([
             'name' => request('name'),
@@ -34,5 +35,5 @@ class InscriptionRestoController extends Controller
 
         flash('Votre restaurant a bien été enregistré avec succès')->success();
         return redirect('/');
-    } 
+    }
 }
