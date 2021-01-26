@@ -52,6 +52,6 @@ Route::get('/index', 'App\Http\Controllers\UserController@index');
 Route::get('/restaurant/manage/{id}', 'App\Http\Controllers\RestaurantController@manageRestaurant')->name('manage.Restaurant');
 
 //Afficher le formulaire de création de plat
-Route::get('/create_dish', 'App\Http\Controllers\DishController@formulaire');
+Route::get('/create_dish/{id}', 'App\Http\Controllers\DishController@formulaire')->name('create.Dish');
 //Créer un plat
-Route::post('/new_dish', 'App\Http\Controllers\DishController@createDish');
+Route::post('/create_dish/{id}/new_dish', 'App\Http\Controllers\DishController@createDish');

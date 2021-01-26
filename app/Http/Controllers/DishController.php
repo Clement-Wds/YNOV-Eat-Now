@@ -2,38 +2,44 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User as User;
+use App\Models\Dish;
 use App\Models\Restaurant as Restaurant;
-use App\Models\Dish as Dish;
 use Illuminate\Http\Request;
 
 class DishController extends Controller
 {
-    public function formulaire(){
+    public function formulaire(int $id){
+        $restaurant = Restaurant::all()->where('id', $id)->first();
+
         if(auth()->check()){
-            return view('restaurant/createDish');
+            return view('restaurant/createDish', [
+                'restaurant' => $restaurant
+            ]);
         }
         flash('Vous devez être connectés pour accéder à cette page')->error();
         return back();
     }
 
     public function createDish(){
+
+        $restaurant = Restaurant::where('id', request('id'))->firstOrFail();
+        $restaurant_id = $restaurant->id;
+
         request()->validate([
             'name' => ['required'],
             'price' => ['required']
         ]);
 
-        $user_id = auth()->user()->id;
         $photo = 'photo';
 
         Dish::create([
             'restaurant_id' => $restaurant_id,
+            'photo' => $photo,
             'name' => request('name'),
-            'price' => request('price'),
-            'photo' => $photo
+            'price' => request('price')
         ]);
-
-        flash('Votre plat a bien été enregistré avec succès')->success();
-        return back('/dashboard');
+        
+        flash('Votre plats a bien été enregistré !')->success();
+        return redirect('/dashboard');
     }
 }

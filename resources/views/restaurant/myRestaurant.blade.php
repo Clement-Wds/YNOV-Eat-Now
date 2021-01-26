@@ -18,7 +18,7 @@
                   <li class="list-group-item">{{ $restaurant->mail_address }}</li>
                 </ul>
                 <div class="card-body">
-                  <a href="/create_dish" class="btn btn-primary">Créer un plat</a>
+                  <a href="{{ route('create.Dish', ['id' => $restaurant->id]) }}" class="btn btn-primary">Créer un plat</a>
                 </div>
               </div>
         </div>
