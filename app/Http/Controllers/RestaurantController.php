@@ -26,6 +26,16 @@ class RestaurantController extends Controller
         ]);
     }
 
+    public function homeResto(){
+        $restaurant = Restaurant::all();
+        $user = auth()->user();
+
+        return view ('restaurant/homeResto', [
+            'restaurant' => $restaurant,
+            'user' => $user
+        ]);
+    }
+
     public function manageRestaurant(int $id){
         $restaurant = Restaurant::all()->where('id', $id)->first();
         $user = auth()->user();

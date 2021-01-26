@@ -42,6 +42,9 @@ Route::post('/new_restaurant', 'App\Http\Controllers\InscriptionRestoController@
 //Afficher le tableau de bord du restaurateur
 Route::get('/dashboard', 'App\Http\Controllers\RestaurantController@dashboard');
 
+//Afficher la page Home des retauranteurs
+Route::get('/homeResto', 'App\Http\Controllers\RestaurantController@homeResto');
+
 //Afficher tous les utilisateurs
 Route::get('/index', 'App\Http\Controllers\UserController@index');
 
