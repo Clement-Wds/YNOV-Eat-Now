@@ -55,3 +55,6 @@ Route::get('/restaurant/manage/{id}', 'App\Http\Controllers\RestaurantController
 Route::get('/create_dish/{id}', 'App\Http\Controllers\DishController@formulaire')->name('create.Dish');
 //Créer un plat
 Route::post('/create_dish/{id}/new_dish', 'App\Http\Controllers\DishController@createDish');
+
+//Page Profil Restaurant
+Route::get('/restaurant/{id}', 'App\Http\Controllers\DishRestaurantController@profileRestaurant')->name('profile.Restaurant');

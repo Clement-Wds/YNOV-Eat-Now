@@ -16,7 +16,8 @@
             <li class="list-group-item">{{ $restaurants->postal_address }}</li>
             <li class="list-group-item">{{ $restaurants->postal_address }}</li>
           </ul>
-          <a href="#" class="btn btn-primary">Voir les Plats</a>
+          <br>
+          <a href="{{ route('profile.Restaurant', ['id' => $restaurants->id]) }}" class="btn btn-primary">Voir les Plats du Restaurant</a>
         </div>
     </div>
     <br>
