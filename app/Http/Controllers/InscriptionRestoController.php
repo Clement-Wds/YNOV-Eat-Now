@@ -23,7 +23,7 @@ class InscriptionRestoController extends Controller
         ]);
 
         $user_id = auth()->user()->id;
-        $logo = 'logo';
+        $logo = 'https://cdn.pixabay.com/photo/2015/08/19/02/27/restaurant-895428_1280.png';
 
         Restaurant::create([
             'name' => request('name'),

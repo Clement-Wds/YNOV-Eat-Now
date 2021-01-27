@@ -51,10 +51,15 @@ Route::get('/index', 'App\Http\Controllers\UserController@index');
 //Gérer un restaurant
 Route::get('/restaurant/manage/{id}', 'App\Http\Controllers\RestaurantController@manageRestaurant')->name('manage.Restaurant');
 
+//GESTION DES PLATS
 //Afficher le formulaire de création de plat
-Route::get('/create_dish/{id}', 'App\Http\Controllers\DishController@formulaire')->name('create.Dish');
+Route::get('/create_dish/{id}', 'App\Http\Controllers\DishController@createDishForm')->name('create.Dish');
 //Créer un plat
 Route::post('/create_dish/{id}/new_dish', 'App\Http\Controllers\DishController@createDish');
+//Affichage du formulaire de modification du plat
+Route::get('/edit_dish/{id}', 'App\Http\Controllers\DishController@editDishForm')->name('edit.Dish');
+//Enregistrer les modifications
+Route::post('/edit_dish/{id}/send', 'App\Http\Controllers\DishController@editDish');
 
 //Page Profil Restaurant
 Route::get('/restaurant/{id}', 'App\Http\Controllers\DishRestaurantController@profileRestaurant')->name('profile.Restaurant');

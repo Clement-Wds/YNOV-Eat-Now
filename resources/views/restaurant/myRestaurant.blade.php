@@ -12,7 +12,7 @@
 
       <div class="card" style="width: 18rem;">
 
-        <img src="https://cdn.pixabay.com/photo/2015/08/19/02/27/restaurant-895428_1280.png" class="card-img-top" alt="...">
+        <img src="{{ $restaurant->logo }}" class="card-img-top" alt="...">
           
         <div class="card-body">
           <h5 class="card-title">{{ $restaurant->name }}</h5>
@@ -39,12 +39,11 @@
 
         <div class="card" style="width: 18rem;">
 
-          <img src="https://cdn.pixabay.com/photo/2015/02/18/12/17/coffee-640647_1280.jpg" class="card-img-top">
+          <img src="{{ $dishs->photo }}" class="card-img-top">
           <div class="card-body">
             <h5 class="card-title">{{ $dishs->name }}</h5>
-            <p class="card-text">{{ $dishs->price }}</p>
-            <a href="#" class="btn btn-primary">Modifier</a>
-            <a href="#" class="btn btn-secondary">Voir</a>
+            <p class="card-text">{{ $dishs->price }}€</p>
+            <a href="{{ route('edit.Dish', ['id' => $dishs -> id]) }}" class="btn btn-primary">Modifier</a>
             <a href="#" class="btn btn-danger">Supprimer</a>
           </div>
   
