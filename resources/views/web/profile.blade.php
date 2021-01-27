@@ -19,7 +19,8 @@
         Membre depuis {{ $user->created_at }}
       </div>
     <div class="card-body">
-      <a href="#" class="btn btn-primary">Modifier</a>
+      <a href="{{ url('/edit_profile') }}" class="btn btn-primary">Modifier</a>
+      <a href="#" class="btn btn-secondary">Modifier mon mot de passe</a>
       <a href="#" class="btn btn-danger">Supprimer mon compte</a>
     </div>
   </div>

@@ -41,7 +41,12 @@ Route::get('/signout', 'App\Http\Controllers\UserAccountController@signout');
 
 //UTILISATEUR
 //Affichage de la vue de gestion du compte
-Route::get('/profile', 'App\Http\Controllers\UserController@form');
+Route::get('/profile', 'App\Http\Controllers\UserController@profile');
+//Afficher le formulaire de modification du profil
+Route::get('/edit_profile', 'App\Http\Controllers\UserController@formEditProfile');
+//Mettre à jour les informations du profil
+Route::post('/edit_profile', 'App\Http\Controllers\UserController@editProfile');
+
 //Affichage de la vie de gestion du solde
 Route::get('/balance', 'App\Http\Controllers\BalanceController@form');
 //Réapprovisionner le solde
