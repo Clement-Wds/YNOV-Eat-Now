@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User as User;
 use App\Models\Restaurant as Restaurant;
+use App\Models\Dish as Dish;
 use Illuminate\Http\Request;
 
 class RestaurantController extends Controller
@@ -40,12 +41,14 @@ class RestaurantController extends Controller
         $restaurant = Restaurant::all()->where('id', $id)->first();
         $user = auth()->user();
         $user_id = Restaurant::all()->where('id', $id)->first()->user_id;
+        $dish = Dish::all();
 
         if (auth()->check()){
             if($user_id == $user->id){
                 return view('restaurant/myRestaurant', [
                     'restaurant' => $restaurant,
-                    'user' => $user
+                    'user' => $user,
+                    'dish' => $dish
                 ]);
             }
             else{
@@ -58,7 +61,4 @@ class RestaurantController extends Controller
             return back();
         }
     }
-
-    
-
 }
