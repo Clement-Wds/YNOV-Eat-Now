@@ -47,6 +47,7 @@ Route::get('/balance', 'App\Http\Controllers\BalanceController@form');
 //Réapprovisionner le solde
 Route::post('/pay', 'App\Http\Controllers\BalanceController@pay');
 
+
 //RESTAURANT
 //Affichage du formulaire de création du restaurant
 Route::get('/create_restaurant', 'App\Http\Controllers\InscriptionRestoController@form');

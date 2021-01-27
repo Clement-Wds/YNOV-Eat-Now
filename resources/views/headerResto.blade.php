@@ -10,6 +10,10 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav">
 
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url('/') }}">Nos Restaurants</a>
+          </li>
+
           @if(auth()->guest())
             <li class="nav-item">
               <a class="nav-link" href="{{ url('/connexion') }}">Connexion</a>
