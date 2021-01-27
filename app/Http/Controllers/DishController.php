@@ -39,9 +39,9 @@ class DishController extends Controller
             'name' => request('name'),
             'price' => request('price')
         ]);
-        
+        $url = '/restaurant/manage/'.$restaurant->id;
         flash('Votre plats a bien été enregistré !')->success();
-        return redirect('/dashboard');
+        return redirect($url);
     }
 
     public function editDishForm(int $id){
@@ -61,24 +61,35 @@ class DishController extends Controller
 
     public function editDish(){
         $dish = Dish::where('id', request('id'))->firstOrFail();
+        $restaurant = Restaurant::where('id', $dish->restaurant_id)->first();
+        $user = auth()->user();
 
-        request()->validate([
-            'name' => ['required'],
-            'price' => ['required']
-        ]);
-
-        $photo = 'https://cdn.pixabay.com/photo/2015/02/18/12/17/coffee-640647_1280.jpg';
+        if($user->id == $restaurant->user_id){
+            if($restaurant->id == $dish->restaurant_id){
+                request()->validate([
+                    'name' => ['required'],
+                    'price' => ['required']
+                ]);
         
-        $dish->name = request('name');
-        $dish->price = request('price');
-        $dish->photo = $photo;
+                $photo = 'https://cdn.pixabay.com/photo/2015/02/18/12/17/coffee-640647_1280.jpg';
+                
+                $dish->name = request('name');
+                $dish->price = request('price');
+                $dish->photo = $photo;
+                $dish->save();
+        
+                $url = '/restaurant/manage/'.$restaurant->id;
+                flash('Votre plat a bien été enregistré !')->success();
+                return redirect($url);
+            }
+        }
 
-        flash('Votre plat a bien été enregistré !')->success();
-        return redirect('/dashboard');
     }
 
-    public function deleteDish(){
-
+    public function deleteDish(int $id){
+        $dish = Dish::all()->where('id', $id)->first();
+        $dish->delete();
+        flash('Votre plat a bien été supprimé !')->info();
+        return back();
     }
-
 }

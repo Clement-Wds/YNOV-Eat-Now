@@ -60,6 +60,8 @@ Route::post('/create_dish/{id}/new_dish', 'App\Http\Controllers\DishController@c
 Route::get('/edit_dish/{id}', 'App\Http\Controllers\DishController@editDishForm')->name('edit.Dish');
 //Enregistrer les modifications
 Route::post('/edit_dish/{id}/send', 'App\Http\Controllers\DishController@editDish');
+//Supprimer un plat
+Route::get('/delete_dish/{id}', 'App\Http\Controllers\DishController@deleteDish')->name('delete.Dish');
 
 //Page Profil Restaurant
 Route::get('/restaurant/{id}', 'App\Http\Controllers\DishRestaurantController@profileRestaurant')->name('profile.Restaurant');
