@@ -3,22 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\User as User;
 
-class UserController extends Controller
+class RestaurateurController extends Controller
 {
-    public function index(){
-        $user = User::all();
-
-        return view('index', [
-            'user' => $user
-        ]);
-    }
-
     public function profile(){
         if(auth()->check()){
             $user = auth()->user();
-            return view('web/profile', [
+            return view('restaurateur/profileRestorer', [
                 'user' => $user
             ]);
         }
@@ -29,7 +20,7 @@ class UserController extends Controller
     public function formEditProfile(){
         if(auth()->check()){
             $user = auth()->user();
-            return view('web/editprofile', [
+            return view('restaurateur/editProfileRestorer', [
                 'user' => $user
             ]);
         }
@@ -56,13 +47,13 @@ class UserController extends Controller
         $user->save();
 
         flash('Les modifications ont bien été enregistrées !')->success();
-        return redirect('/profile');
+        return redirect('/profileRestorer');
     }
 
     public function formChangePassword(){
         if(auth()->check()){
             $user = auth()->user();
-            return view('web/changePassword', [
+            return view('restaurateur/changePasswordRestorer', [
                 'user' => $user
             ]);
         }
@@ -82,13 +73,6 @@ class UserController extends Controller
         $user->save();
 
         flash('Votre mot de passe a été modifié avec succès !')->success();
-        return redirect('/profile');
-    }
-
-    public function deleteUser(){
-        $user = auth()->user();
-        $user->delete();
-        flash('Votre profil a bien été supprimé - Vous pouvez seulement consulter les restaurants et leurs plats - Créez un compte pour pouvoir commander des plats');
-        return redirect('/home');
+        return redirect('/profileRestorer');
     }
 }

@@ -56,6 +56,17 @@ Route::get('/delete_profile','App\Http\Controllers\UserController@deleteUser');
 Route::get('/balance', 'App\Http\Controllers\BalanceController@form');
 //Réapprovisionner le solde
 Route::post('/pay', 'App\Http\Controllers\BalanceController@pay');
+//Profil Restaurateur
+Route::get('/profileRestorer', 'App\Http\Controllers\RestaurateurController@profile');
+//Editer profil Restaurateur
+Route::get('/edit_profileRestorer', 'App\Http\Controllers\RestaurateurController@formEditProfile');
+route::post('/edit_profileRestorer', 'App\Http\Controllers\RestaurateurController@editProfile');
+//Modifier mot de passe restaurateur
+Route::get('/change_passwordRestorer','App\Http\Controllers\RestaurateurController@formChangePassword');
+Route::post('/change_passwordRestorer','App\Http\Controllers\RestaurateurController@changePassword');
+//Solde restaurateur
+Route::get('/balanceRestorer', 'App\Http\Controllers\BalanceController@formRestorer');
+Route::post('/payRestorer', 'App\Http\Controllers\BalanceController@payRestorer');
 
 
 //RESTAURANT

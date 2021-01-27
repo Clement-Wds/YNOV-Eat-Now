@@ -33,6 +33,14 @@
             </li>
 
             <li class="nav-item">
+              <a class="nav-link" href="{{ url('/profileRestorer') }}">Mon Compte</a>
+            </li>
+  
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url('/balanceRestorer') }}">Mon Solde</a>
+            </li>
+
+            <li class="nav-item">
               <a class="nav-link" href="{{ url('/signout') }}">Déconnexion</a>
             </li>
 
