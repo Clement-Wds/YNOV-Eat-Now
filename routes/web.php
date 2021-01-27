@@ -46,6 +46,10 @@ Route::get('/profile', 'App\Http\Controllers\UserController@profile');
 Route::get('/edit_profile', 'App\Http\Controllers\UserController@formEditProfile');
 //Mettre à jour les informations du profil
 Route::post('/edit_profile', 'App\Http\Controllers\UserController@editProfile');
+//Afficher le formulaire de modification du Mot de Passe
+Route::get('/change_password', 'App\Http\Controllers\UserController@formChangePassword');
+//Modifier le mot de passe
+Route::post('/change_password', 'App\Http\Controllers\UserController@changePassword');
 
 //Affichage de la vie de gestion du solde
 Route::get('/balance', 'App\Http\Controllers\BalanceController@form');

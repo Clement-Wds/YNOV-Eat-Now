@@ -60,4 +60,34 @@ class UserController extends Controller
         flash('Les modifications ont bien été enregistrées !')->success();
         return redirect('/profile');
     }
+
+    public function formChangePassword(){
+        if(auth()->check()){
+            $user = auth()->user();
+            return view('web/changePassword', [
+                'user' => $user
+            ]);
+        }
+        flash('Vous devez être connecté pour accéder à cette page')->error();
+        return redirect('/connexion');
+    }
+
+    public function changePassword(){
+        $user = auth()->user();
+
+        request()->validate([
+            'password' => ['required', 'min:8', 'confirmed'],
+            'password_confirmation' => ['required']
+        ]);
+
+        $user->password = bcrypt(required('password'));
+        $user->save();
+
+        flash('Votre mot de passe a été modifié avec succès !')->succes();
+        return redirect('/profile');
+    }
+
+    public function deleteUser(){
+
+    }
 }
