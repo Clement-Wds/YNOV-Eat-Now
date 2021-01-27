@@ -39,6 +39,12 @@ Route::post('/connexion', 'App\Http\Controllers\ConnexionController@connexion');
 Route::get('/signout', 'App\Http\Controllers\UserAccountController@signout');
 
 
+//UTILISATEUR
+//Affichage de la vue de gestion du compte
+Route::get('/profile', 'App\Http\Controllers\UserController@profileForm');
+//Affichage de la vie de gestion du solde
+Route::get('/balance', 'App\Http\Controllers\BalanceController@balanceForm');
+
 //RESTAURANT
 //Affichage du formulaire de création du restaurant
 Route::get('/create_restaurant', 'App\Http\Controllers\InscriptionRestoController@formulaire');
@@ -68,6 +74,3 @@ Route::get('/delete_dish/{id}', 'App\Http\Controllers\DishController@deleteDish'
 //ADMIN
 //Afficher tous les utilisateurs
 Route::get('/index', 'App\Http\Controllers\UserController@index');
-
-
-

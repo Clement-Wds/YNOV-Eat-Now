@@ -2,25 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\User as User;
+use Illuminate\Http\Request;
 
-class UserController extends Controller
+class BalanceController extends Controller
 {
-    public function index(){
-        $user = User::all();
-
-        return view('index', [
-            'user' => $user
-        ]);
-    }
-
-    public function profileForm(){
-        
-
+    public function balanceForm(){
         if(auth()->check()){
             $user = auth()->user();
-            return view('web/profile', [
+            return view('web/balance', [
                 'user' => $user
             ]);
         }

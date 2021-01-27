@@ -21,9 +21,17 @@
         @else
 
           <li class="nav-item">
+            <a class="nav-link" href="{{ url('/profile') }}">Mon Compte</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url('/balance') }}">Mon Solde</a>
+          </li>
+
+          <li class="nav-item">
             <a class="nav-link" href="{{ url('/signout') }}">Déconnexion</a>
           </li>
-            
+
         @endif
 
       </ul>
