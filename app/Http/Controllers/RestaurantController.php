@@ -61,4 +61,31 @@ class RestaurantController extends Controller
             return back();
         }
     }
+
+    public function formEditRestaurant(){
+
+    }
+
+    public function editRestaurant(){
+
+    }
+
+    public function deleteRestaurant(int $id){
+        $user = auth()->user();
+        $restaurant = Restaurant::all()->where('id', $id)->first();
+        $dish = Dish::all()->where('restaurant_id', $restaurant->id)->first();
+
+        if($user->id == $restaurant->user_id){
+            //Suppression des plats du restaurant
+            foreach ($dish as $dishs) {
+                $dishs->delete();
+            }
+            //Suppression du restaurant
+            $restaurant->delete();
+            flash('Votre restaurant a bien été supprimé !')->info();
+            return redirect('/dashboard');
+        }
+        flash('Vous ne pouvez pas supprimer un restaurant qui ne vous appartient pas !')->error();
+        return back();
+    }
 }

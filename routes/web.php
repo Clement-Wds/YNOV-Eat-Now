@@ -80,7 +80,12 @@ Route::get('/dashboard', 'App\Http\Controllers\RestaurantController@dashboard');
 Route::get('/restaurant/manage/{id}', 'App\Http\Controllers\RestaurantController@manageRestaurant')->name('manage.Restaurant');
 //Page Profil Restaurant
 Route::get('/restaurant/{id}', 'App\Http\Controllers\DishRestaurantController@profileRestaurant')->name('profile.Restaurant');
-
+//Affichage formulaire modification Restaurant
+Route::get('/edit_restaurant/{id}', 'App\Http\Controllers\DishRestaurantController@formEditRestaurant')->name('edit.Restaurant');
+//Modifier un restaurant
+Route::post('/edit_restaurant/{id}/send', 'App\Http\Controllers\DishRestaurantController@editRestaurant');
+//Supprimer un resstaurant
+Route::get('delete_restaurant/{id}', 'App\Http\Controllers\DishController@deleteDish')->name('delete.Restaurant');
 
 //GESTION DES PLATS
 //Afficher le formulaire de création de plat
