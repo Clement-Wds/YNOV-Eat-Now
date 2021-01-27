@@ -50,7 +50,8 @@ Route::post('/edit_profile', 'App\Http\Controllers\UserController@editProfile');
 Route::get('/change_password', 'App\Http\Controllers\UserController@formChangePassword');
 //Modifier le mot de passe
 Route::post('/change_password', 'App\Http\Controllers\UserController@changePassword');
-
+//Supprimer le profil
+Route::get('/delete_profile','App\Http\Controllers\UserController@deleteUser');
 //Affichage de la vie de gestion du solde
 Route::get('/balance', 'App\Http\Controllers\BalanceController@form');
 //Réapprovisionner le solde

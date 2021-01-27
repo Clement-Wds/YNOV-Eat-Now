@@ -80,14 +80,17 @@ class UserController extends Controller
             'password_confirmation' => ['required']
         ]);
 
-        $user->password = bcrypt(required('password'));
+        $user->password = bcrypt(request('password'));
         $user->save();
 
-        flash('Votre mot de passe a été modifié avec succès !')->succes();
+        flash('Votre mot de passe a été modifié avec succès !')->success();
         return redirect('/profile');
     }
 
     public function deleteUser(){
-
+        $user = auth()->user();
+        $user->delete();
+        flash('Votre profil a bien été supprimé - Vous pouvez seulement consulter les restaurants et leurs plats - Créez un compte pour pouvoir commander des plats');
+        return redirect('/home');
     }
 }
