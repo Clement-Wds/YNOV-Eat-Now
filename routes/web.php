@@ -23,14 +23,14 @@ Route::get('/homeResto', 'App\Http\Controllers\RestaurantController@homeResto');
 
 //INSCRIPTION
 //Affichage formulaire d'inscription
-Route::get('/inscription', 'App\Http\Controllers\InscriptionCOntroller@formulaire');
+Route::get('/inscription', 'App\Http\Controllers\InscriptionCOntroller@form');
 //Réception et traitement des données du formulaire
 Route::post('/inscription', 'App\Http\Controllers\InscriptionCOntroller@createUser');
 
 
 //CONNEXION
 //Affichage formulaire connexion
-Route::get('/connexion', 'App\Http\Controllers\ConnexionController@formulaire');
+Route::get('/connexion', 'App\Http\Controllers\ConnexionController@form');
 //Récupération et traitement des données du formulaire
 Route::post('/connexion', 'App\Http\Controllers\ConnexionController@connexion');
 
@@ -41,13 +41,15 @@ Route::get('/signout', 'App\Http\Controllers\UserAccountController@signout');
 
 //UTILISATEUR
 //Affichage de la vue de gestion du compte
-Route::get('/profile', 'App\Http\Controllers\UserController@profileForm');
+Route::get('/profile', 'App\Http\Controllers\UserController@form');
 //Affichage de la vie de gestion du solde
-Route::get('/balance', 'App\Http\Controllers\BalanceController@balanceForm');
+Route::get('/balance', 'App\Http\Controllers\BalanceController@form');
+//Réapprovisionner le solde
+Route::post('/pay', 'App\Http\Controllers\BalanceController@pay');
 
 //RESTAURANT
 //Affichage du formulaire de création du restaurant
-Route::get('/create_restaurant', 'App\Http\Controllers\InscriptionRestoController@formulaire');
+Route::get('/create_restaurant', 'App\Http\Controllers\InscriptionRestoController@form');
 //Création du restaurant
 Route::post('/new_restaurant', 'App\Http\Controllers\InscriptionRestoController@createRestaurant');
 //Afficher le tableau de bord du restaurateur

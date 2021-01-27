@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class InscriptionRestoController extends Controller
 {
-    public function formulaire(){
+    public function form(){
         if(auth()->check()){
             return view('restaurant/inscriptionresto');
         }

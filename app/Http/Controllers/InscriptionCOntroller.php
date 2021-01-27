@@ -7,7 +7,7 @@ use App\Models\User as User;
 
 class InscriptionCOntroller extends Controller
 {
-    public function formulaire(){
+    public function form(){
         return view('web/inscription');
     }
 

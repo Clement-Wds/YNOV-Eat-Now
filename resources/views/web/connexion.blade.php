@@ -6,7 +6,7 @@
 
 <form action="/connexion" method="POST" class="row g-3">
 
-    {{ csrf_field() }} 
+    {{ csrf_field() }}
 
     <div class="col-md-6">
         <label for="inputEmail" class="form-label">Email</label>

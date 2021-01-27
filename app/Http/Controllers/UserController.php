@@ -15,7 +15,7 @@ class UserController extends Controller
         ]);
     }
 
-    public function profileForm(){
+    public function form(){
         
 
         if(auth()->check()){

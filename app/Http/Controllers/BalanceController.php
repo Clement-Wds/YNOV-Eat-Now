@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class BalanceController extends Controller
 {
-    public function balanceForm(){
+    public function form(){
         if(auth()->check()){
             $user = auth()->user();
             return view('web/balance', [
@@ -16,5 +16,24 @@ class BalanceController extends Controller
         }
         flash('Vous devez être connecté pour accéder à cette page')->error();
         return redirect('/connexion');
+    }
+
+    public function pay(){
+        $user = auth()->user();
+
+        request()->validate([
+            'email' => ['required'],
+            'balance' => ['required']
+        ]);
+
+        if($user->email == request('email')){
+            $user->balance = request('balance');
+            $user->save();
+
+            flash('Votre solde a été réapprovisionné avec succès !')->success();
+            return redirect('/balance');
+        }
+        flash('Mot de passe incorrect, nous ne pouvons pas réapprovisionner votre solde !')->error();
+        return redirect('/balance');
     }
 }

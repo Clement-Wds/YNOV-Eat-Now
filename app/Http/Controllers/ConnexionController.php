@@ -7,7 +7,7 @@ use App\Models\User as User;
 
 class ConnexionController extends Controller
 {
-    public function formulaire(){
+    public function form(){
         return view('web/connexion');
     }
 
