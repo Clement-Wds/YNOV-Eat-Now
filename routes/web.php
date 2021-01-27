@@ -13,13 +13,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+//PAGE HOME
 Route::get('/', 'App\Http\Controllers\HomeController@home');
-
-//Page Home avec la liste des restaurants
+//Page Home des clients avec la liste des restaurants
 Route::get('/home', 'App\Http\Controllers\RestaurantController@listeRestaurant');
+//Afficher la page Home des retaurateurs
+Route::get('/homeResto', 'App\Http\Controllers\RestaurantController@homeResto');
 
-//Se déconnecter
-Route::get('/signout', 'App\Http\Controllers\UserAccountController@signout');
 
 //INSCRIPTION
 //Affichage formulaire d'inscription
@@ -27,29 +27,30 @@ Route::get('/inscription', 'App\Http\Controllers\InscriptionCOntroller@formulair
 //Réception et traitement des données du formulaire
 Route::post('/inscription', 'App\Http\Controllers\InscriptionCOntroller@createUser');
 
+
 //CONNEXION
 //Affichage formulaire connexion
 Route::get('/connexion', 'App\Http\Controllers\ConnexionController@formulaire');
 //Récupération et traitement des données du formulaire
 Route::post('/connexion', 'App\Http\Controllers\ConnexionController@connexion');
 
+
+//DECONNEXION
+Route::get('/signout', 'App\Http\Controllers\UserAccountController@signout');
+
+
 //RESTAURANT
 //Affichage du formulaire de création du restaurant
 Route::get('/create_restaurant', 'App\Http\Controllers\InscriptionRestoController@formulaire');
 //Création du restaurant
 Route::post('/new_restaurant', 'App\Http\Controllers\InscriptionRestoController@createRestaurant');
-
 //Afficher le tableau de bord du restaurateur
 Route::get('/dashboard', 'App\Http\Controllers\RestaurantController@dashboard');
-
-//Afficher la page Home des retauranteurs
-Route::get('/homeResto', 'App\Http\Controllers\RestaurantController@homeResto');
-
-//Afficher tous les utilisateurs
-Route::get('/index', 'App\Http\Controllers\UserController@index');
-
 //Gérer un restaurant
 Route::get('/restaurant/manage/{id}', 'App\Http\Controllers\RestaurantController@manageRestaurant')->name('manage.Restaurant');
+//Page Profil Restaurant
+Route::get('/restaurant/{id}', 'App\Http\Controllers\DishRestaurantController@profileRestaurant')->name('profile.Restaurant');
+
 
 //GESTION DES PLATS
 //Afficher le formulaire de création de plat
@@ -63,5 +64,10 @@ Route::post('/edit_dish/{id}/send', 'App\Http\Controllers\DishController@editDis
 //Supprimer un plat
 Route::get('/delete_dish/{id}', 'App\Http\Controllers\DishController@deleteDish')->name('delete.Dish');
 
-//Page Profil Restaurant
-Route::get('/restaurant/{id}', 'App\Http\Controllers\DishRestaurantController@profileRestaurant')->name('profile.Restaurant');
+
+//ADMIN
+//Afficher tous les utilisateurs
+Route::get('/index', 'App\Http\Controllers\UserController@index');
+
+
+
