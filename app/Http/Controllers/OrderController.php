@@ -37,7 +37,7 @@ class OrderController extends Controller
                     'dish_price' => $dish->price,
                     'restaurant_name' => $restaurant->name
                 ]);
-                flash('Votre commande a bien été prise en compte');
+                flash('Votre commande a bien été prise en compte - Finalisez la dans le panier');
                 return back();
             }
             //flash('Vous ne pouvez pas commander des plats de plusieurs restaurants différents !');
@@ -66,6 +66,44 @@ class OrderController extends Controller
                     'orders' => $oders
                 ]);
             }
+        }
+        else{
+            flash('Vous devez être connecté pour accéder au panier !')->error();
+            return redirect('/connexion');
+        }
+    }
+
+    public function validateOrder(){
+        if(auth()->check()){
+            $user = auth()->user();
+            $user_id = $user->id;
+            $orders = Order::all()->where('user_id', $user_id);
+            $total_price = 0.0;
+
+            foreach($orders as $order){
+                $total_price += $order->price;
+            }
+
+            if($user->balance <= $total_price){
+                $rest = $total_price - $user->balance;
+                flash('désolé mais votre solde est insuffisant pour finaliser la commande, il vous manque : '.$rest.'€');
+                return redirect('/balance');
+            }
+            else{
+                $newBalance = $user->balance - $total_price;
+                $user->balance = $newBalance;
+                $user->save();
+                foreach($orders as $order){
+                    $order->delete();
+                }
+                flash('Votre commande a été effectué avec succès : LIVRAISON(S) EN COURS !')->success();
+                return back();
+            }
+            
+        }
+        else{
+            flash('Vous devez être connecté pour valider une commande !')->error();
+            return redirect('/connexion');
         }
     }
 }

@@ -12,12 +12,14 @@
         <ul class="list-group list-group-flush">
             @foreach($orders as $order)
                 @if($order->user_id == $user->id)
-                <li class="list-group-item"> {{ $order->dish_name }} | {{ $order->dish_price }} € | <b>{{ $order->restaurant_name }}</b> </li>
+                    @if($order->status == '1')
+                        <li class="list-group-item"> {{ $order->dish_name }} | {{ $order->dish_price }} € | <b>{{ $order->restaurant_name }}</b> </li>
+                    @endif
                 @endif
             @endforeach
             
         </ul>
-        <a href="#" class="btn btn-primary">VALIDER LA COMMANDE</a>
+        <a href="{{ url('/validate_order') }}" class="btn btn-primary">VALIDER LA COMMANDE</a>
     </div>
 </div>
 

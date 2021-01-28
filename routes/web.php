@@ -105,6 +105,8 @@ Route::get('/delete_dish/{id}', 'App\Http\Controllers\DishController@deleteDish'
 Route::get('/order/{id}', 'App\Http\Controllers\OrderController@newOrder')->name('new.Order');
 //Afficher le panier
 Route::get('/shopping_cart', 'App\Http\Controllers\OrderController@shoppingCart');
+//Valider la commande
+Route::get('/validate_order', 'App\Http\Controllers\OrderController@validateOrder');
 
 
 //ADMIN
