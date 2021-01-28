@@ -31,6 +31,11 @@ class OrderController extends Controller
                     'address_client' => $user->address,
                     'status' => 1,
                     'price' => $dish->price + 2.50,
+                    'restaurant_id' => $restaurant->id,
+                    'dish_id' => $dish->id,
+                    'dish_name' => $dish->name,
+                    'dish_price' => $dish->price,
+                    'restaurant_name' => $restaurant->name
                 ]);
                 flash('Votre commande a bien été prise en compte');
                 return back();
@@ -46,25 +51,19 @@ class OrderController extends Controller
     public function shoppingCart(){
         if(auth()->check()){
             $user = auth()->user();
-            $orders = Order::all()->where('user_id', $user->id)->first();
-            $dish = Dish::all();
-            $restaurant = Restaurant::all();
+            $orders = Order::all();
 
             if($user->status == 'Client'){
                 return view('order/shopping_cart', [
                     'user' => $user,
-                    'orders' => $orders,
-                    'restaurant' => $restaurant,
-                    'dish' => $dish
+                    'orders' => $orders
                 ]);
             }
 
             if($user->status == 'Restaurateur'){
                 return view('order/shopping_cartResto', [
                     "user" => $user,
-                    'orders' => $oders,
-                    'restaurant' => $restaurant,
-                    'dish' => $dish
+                    'orders' => $oders
                 ]);
             }
         }

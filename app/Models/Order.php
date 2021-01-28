@@ -16,6 +16,9 @@ class Order extends Model
         'status',
         'price',
         'restaurant_id',
-        'dish_id'
+        'dish_id',
+        'dish_name',
+        'dish_price',
+        'restaurant_name',
     ];
 }

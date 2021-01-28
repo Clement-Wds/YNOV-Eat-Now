@@ -15,6 +15,7 @@ class Dish extends Model
         'photo',
         'name',
         'price',
+        
     ];
 }
 
