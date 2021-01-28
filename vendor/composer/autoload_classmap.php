@@ -2018,6 +2018,8 @@ return array(
     'Illuminate\\View\\ViewFinderInterface' => $vendorDir . '/laravel/framework/src/Illuminate/View/ViewFinderInterface.php',
     'Illuminate\\View\\ViewName' => $vendorDir . '/laravel/framework/src/Illuminate/View/ViewName.php',
     'Illuminate\\View\\ViewServiceProvider' => $vendorDir . '/laravel/framework/src/Illuminate/View/ViewServiceProvider.php',
+    'Jenssegers\\Date\\Date' => $vendorDir . '/jenssegers/date/src/Date.php',
+    'Jenssegers\\Date\\DateServiceProvider' => $vendorDir . '/jenssegers/date/src/DateServiceProvider.php',
     'JsonException' => $vendorDir . '/symfony/polyfill-php73/Resources/stubs/JsonException.php',
     'Laracasts\\Flash\\Flash' => $vendorDir . '/laracasts/flash/src/Laracasts/Flash/Flash.php',
     'Laracasts\\Flash\\FlashNotifier' => $vendorDir . '/laracasts/flash/src/Laracasts/Flash/FlashNotifier.php',

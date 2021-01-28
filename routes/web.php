@@ -101,7 +101,10 @@ Route::get('/delete_dish/{id}', 'App\Http\Controllers\DishController@deleteDish'
 
 
 //COMMANDE
+//Ajouter une commande au panier
 Route::get('/order/{id}', 'App\Http\Controllers\OrderController@newOrder')->name('new.Order');
+//Afficher le panier
+Route::get('/shopping_cart', 'App\Http\Controllers\OrderController@shoppingCart');
 
 
 //ADMIN

@@ -17,28 +17,56 @@ class OrderController extends Controller
             $dish = Dish::all()->where('id', $id)->first();
             $restaurant = Restaurant::all()->where('id', $dish->restaurant_id)->first();
             $orders = Order::all()->where('user_id', $user->id);
-            $time = Date::now();
             $check_value = 0;
 
-            foreach($orders->status == 1 as $order){
-                if($order->restaurant_id != $restaurant->id){
-                    $check_value = 1;
-                }
-            }
+            // foreach($orders->status == 1 as $order){
+            //     if($order->restaurant_id != $restaurant->id){
+            //         $check_value = 1;
+            //     }
+            // }
 
             if($check_value == 0){
                 Order::create([
                     'user_id' => $user->id,
                     'address_client' => $user->address,
-                    'delivery_time' => $time->add('1 hour'),
                     'status' => 1,
                     'price' => $dish->price + 2.50,
                 ]);
+                flash('Votre commande a bien été prise en compte');
+                return back();
             }
-            flash('Vous ne pouvez pas commander des plats de plusieurs restaurants différents !');
+            //flash('Vous ne pouvez pas commander des plats de plusieurs restaurants différents !');
         }
+        else{
+            flash('Vous devez être connecté pour commander un plat !')->error();
+            return redirect('/connexion');
+        }
+    }
 
-        flash('Vous devez être connecté pour commander un plat !')->error();
-        return redirect('/connexion');
+    public function shoppingCart(){
+        if(auth()->check()){
+            $user = auth()->user();
+            $orders = Order::all()->where('user_id', $user->id)->first();
+            $dish = Dish::all();
+            $restaurant = Restaurant::all();
+
+            if($user->status == 'Client'){
+                return view('order/shopping_cart', [
+                    'user' => $user,
+                    'orders' => $orders,
+                    'restaurant' => $restaurant,
+                    'dish' => $dish
+                ]);
+            }
+
+            if($user->status == 'Restaurateur'){
+                return view('order/shopping_cartResto', [
+                    "user" => $user,
+                    'orders' => $oders,
+                    'restaurant' => $restaurant,
+                    'dish' => $dish
+                ]);
+            }
+        }
     }
 }

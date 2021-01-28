@@ -35,7 +35,7 @@
                     <div class="card-body">
                         <h5 class="card-title">{{ $dishs->name }}</h5>
                         <p class="card-text">{{ $dishs->price }}€</p>
-                        <a href="#" class="btn btn-primary">Commander</a>
+                        <a href="{{ route('new.Order', ['id' => $dishs -> id]) }}" class="btn btn-primary">Commander</a>
                     </div>
                 </div>
             </div>
