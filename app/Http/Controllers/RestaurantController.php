@@ -62,12 +62,52 @@ class RestaurantController extends Controller
         }
     }
 
-    public function formEditRestaurant(){
+    public function formEditRestaurant(int $id){
+        $restaurant = Restaurant::all()->where('id', $id)->first();
+        $user = auth()->user();
 
+        if(auth()->check()){
+            if($user->id == $restaurant->user_id){
+                return view('restaurant/editRestaurant', [
+                    'restaurant' => $restaurant,
+                ]);
+            }
+            flash('Vous ne pouvez pas modifier un restaurant qui ne vous appartient pas !')->error();
+            return redirect('/dahsboard');
+        }
+        flash('Vous devez être connecté pour effectuer cette action !')->error();
+        return redirect('/');
     }
 
     public function editRestaurant(){
+        $restaurant = Restaurant::where('id', request('id'))->firstOrFail();
+        $user = auth()->user();
 
+        if(auth()->check()){
+            if($user->id == $restaurant->user_id){
+                request()->validate([
+                    'name' => ['required'],
+                    'postal_address' => ['required'],
+                    'mail_address' => ['required']
+                ]);
+
+                $logo = 'https://cdn.pixabay.com/photo/2015/08/19/02/27/restaurant-895428_1280.png';
+
+                $restaurant->name = request('name');
+                $restaurant->logo = $logo;
+                $restaurant->postal_address = request('postal_address');
+                $restaurant->mail_address = request('mail_address');
+                $restaurant->save();
+
+                $url = '/restaurant/manage/'.$restaurant->id;
+                flash('Votre restaurant a bien été modifié !')->success();
+                return redirect($url);
+            }
+            flash('Vous ne pouvez pas modifier un restaurant qui ne vous appartient pas !')->error();
+            return redirect('/dahsboard');
+        }
+        flash('Vous devez être connecté pour effectuer cette action !')->error();
+        return redirect('/');
     }
 
     public function deleteRestaurant(int $id){

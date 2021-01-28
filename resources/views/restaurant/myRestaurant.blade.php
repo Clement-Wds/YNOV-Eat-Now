@@ -24,7 +24,7 @@
         </ul>
 
         <div class="card-body">
-          <a href="#" class="btn btn-primary">Modifier</a>
+          <a href="{{ route('edit.Restaurant', ['id' => $restaurant->id]) }}" class="btn btn-primary">Modifier</a>
           <a href="{{ route('create.Dish', ['id' => $restaurant->id]) }}" class="btn btn-secondary">Créer un plat</a>
         </div>
 
