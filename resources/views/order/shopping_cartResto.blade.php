@@ -12,9 +12,7 @@
         <ul class="list-group list-group-flush">
             @foreach($orders as $order)
                 @if($order->user_id == $user->id)
-                    @if($order->status == '1')
-                        <li class="list-group-item"> {{ $order->dish_name }} | {{ $order->dish_price }} € | <b>{{ $order->restaurant_name }}</b> </li>
-                    @endif
+                    <li class="list-group-item"> {{ $order->dish_name }} | {{ $order->dish_price }} € | <b>{{ $order->restaurant_name }}</b> </li>
                 @endif
             @endforeach
             
