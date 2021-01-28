@@ -33,6 +33,10 @@
           </li>
 
           <li class="nav-item">
+            <a class="nav-link" href="{{ url('/shopping_cart') }}">Mon Panier</a>
+          </li>
+
+          <li class="nav-item">
             <a class="nav-link" href="{{ url('/signout') }}">Déconnexion</a>
           </li>
 

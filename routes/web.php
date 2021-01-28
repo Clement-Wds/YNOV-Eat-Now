@@ -100,6 +100,10 @@ Route::post('/edit_dish/{id}/send', 'App\Http\Controllers\DishController@editDis
 Route::get('/delete_dish/{id}', 'App\Http\Controllers\DishController@deleteDish')->name('delete.Dish');
 
 
+//COMMANDE
+Route::get('/order/{id}', 'App\Http\Controllers\OrderController@newOrder')->name('new.Order');
+
+
 //ADMIN
 //Afficher tous les utilisateurs
 Route::get('/index', 'App\Http\Controllers\UserController@index');
